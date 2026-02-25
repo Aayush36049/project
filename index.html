@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
+    <title>Aayush Yadav | Portfolio</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
@@ -20,21 +20,21 @@
         body {
             background: #0f172a;
             color: #fff;
+            overflow-x: hidden;
         }
 
         /* NAVBAR */
-
         nav {
             position: fixed;
             width: 100%;
-            padding: 20px 100px;
+            padding: 20px 10%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(15, 23, 42, 0.9);
+            background: rgba(15, 23, 42, 0.95);
             backdrop-filter: blur(10px);
             z-index: 1000;
-            transition: 0.3s;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         nav .logo {
@@ -65,7 +65,6 @@
             color: #38bdf8;
         }
 
-        /* Hamburger Menu (Hidden on Desktop) */
         .hamburger {
             display: none;
             cursor: pointer;
@@ -81,26 +80,22 @@
         }
 
         /* SECTIONS */
-
         section {
             min-height: 100vh;
-            padding: 120px 100px;
+            padding: 100px 10%;
             display: flex;
             flex-direction: column;
             justify-content: center;
         }
 
         /* HOME */
-
         #home {
-            background: linear-gradient(to right, #0f172a, #1e293b);
-            align-items: flex-start;
-            /* Align text to left */
+            background: radial-gradient(circle at top right, #1e293b, #0f172a);
         }
 
         #home h1 {
-            font-size: 55px;
-            line-height: 1.2;
+            font-size: clamp(40px, 8vw, 70px);
+            line-height: 1.1;
         }
 
         #home span {
@@ -109,56 +104,60 @@
 
         #home p {
             font-size: 20px;
-            margin-top: 10px;
+            margin-top: 15px;
             color: #cbd5e1;
         }
 
         .btn {
-            margin-top: 20px;
-            padding: 12px 25px;
+            margin-top: 30px;
+            padding: 12px 30px;
             background: #38bdf8;
-            border: none;
             color: #0f172a;
             font-weight: 600;
-            cursor: pointer;
-            border-radius: 30px;
-            transition: 0.3s;
             text-decoration: none;
+            border-radius: 50px;
+            transition: 0.3s;
             display: inline-block;
-            width: max-content;
+            border: none;
         }
 
         .btn:hover {
             background: #0ea5e9;
             transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(56, 189, 248, 0.2);
         }
 
         /* ABOUT */
-
         #about {
             background: #1e293b;
         }
 
         .section-title {
             font-size: 40px;
-            margin-bottom: 50px;
+            margin-bottom: 60px;
             text-align: center;
         }
 
         .about-container {
             display: flex;
-            gap: 50px;
+            gap: 60px;
             align-items: center;
             flex-wrap: wrap;
             justify-content: center;
         }
 
         .about-img {
-            width: 300px;
-            height: 300px;
+            width: 320px;
+            height: 320px;
             object-fit: cover;
-            border-radius: 20px;
-            border: 2px solid #38bdf8;
+            border-radius: 30px;
+            border: 4px solid #38bdf8;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
         }
 
         .info-card {
@@ -166,289 +165,138 @@
             padding: 20px;
             margin-top: 20px;
             border-radius: 15px;
-            transition: 0.4s;
-            cursor: pointer;
-            border: 1px solid transparent;
+            transition: 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .info-card:hover {
-            transform: translateY(-10px);
             background: #38bdf8;
-            color: #000;
-            border-color: #38bdf8;
+            color: #0f172a;
+            transform: translateX(10px);
         }
 
         /* SKILLS */
-
-        #skills {
-            background: #0f172a;
-        }
-
         .skill-container {
-            display: flex;
-            gap: 30px;
-            flex-wrap: wrap;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
         }
 
         .skill-card {
-            flex: 1 1 200px;
             padding: 30px;
             text-align: center;
             background: rgba(255, 255, 255, 0.05);
             border-radius: 20px;
             transition: 0.4s;
-            cursor: pointer;
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .skill-card:hover {
-            transform: scale(1.05);
-            background: #38bdf8;
-            color: #000;
+            transform: translateY(-10px);
+            border-color: #38bdf8;
+            background: rgba(56, 189, 248, 0.1);
         }
 
         /* PROJECTS */
-
-        #projects {
-            background: #1e293b;
-        }
-
         .project-container {
-            display: flex;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
-            flex-wrap: wrap;
-            justify-content: center;
         }
 
         .project-card {
             position: relative;
-            flex: 1 1 300px;
             overflow: hidden;
             border-radius: 20px;
-            cursor: pointer;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            aspect-ratio: 16/9;
         }
 
         .project-card img {
             width: 100%;
-            height: 250px;
+            height: 100%;
             object-fit: cover;
-            display: block;
             transition: 0.5s;
+        }
+
+        .project-info {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(transparent, rgba(15, 23, 42, 0.95));
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 20px;
+            opacity: 0;
+            transition: 0.5s;
+        }
+
+        .project-card:hover .project-info {
+            opacity: 1;
         }
 
         .project-card:hover img {
             transform: scale(1.1);
         }
 
-        .project-info {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(5px);
-            padding: 20px;
-            transform: translateY(100%);
-            transition: 0.5s;
-        }
-
-        .project-card:hover .project-info {
-            transform: translateY(0);
-        }
-
         /* CONTACT */
-
-
-.contact {
-    background: #0f172a;
-    padding: 80px 10%;
-    color: #fff;
-}
-
-.contact .heading {
-    text-align: center;
-    font-size: 40px;
-    margin-bottom: 40px;
-}
-
-.contact .heading span {
-    color: #00f7ff;
-}
-
-.contact form {
-    max-width: 700px;
-    margin: auto;
-    text-align: center;
-}
-
-.contact .input-box {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
-
-.contact .input-box input {
-    width: 49%;
-    padding: 12px;
-    margin-bottom: 20px;
-    border-radius: 8px;
-    border: none;
-    outline: none;
-    background: #1e293b;
-    color: #fff;
-    font-size: 16px;
-}
-
-.contact textarea {
-    width: 100%;
-    padding: 12px;
-    border-radius: 8px;
-    border: none;
-    outline: none;
-    background: #1e293b;
-    color: #fff;
-    font-size: 16px;
-    margin-bottom: 20px;
-    resize: none;
-}
-
-.contact .btn {
-    padding: 12px 30px;
-    border-radius: 30px;
-    border: none;
-    background: #00f7ff;
-    color: #000;
-    font-size: 16px;
-    cursor: pointer;
-    transition: 0.3s ease;
-}
-
-.contact .btn:hover {
-    background: #fff;
-    color: #000;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .contact .input-box input {
-        width: 100%;
-    }
-}
-
-
-
         #contact {
-            background: linear-gradient(to right, #0f172a, #1e293b);
+            background: #0f172a;
         }
 
-        .contact-container {
-            display: flex;
-            gap: 50px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .contact-info,
         .contact-form {
-            flex: 1;
-            min-width: 300px;
+            max-width: 600px;
+            margin: 0 auto;
+            width: 100%;
         }
 
-        .contact-info p {
+        .input-box {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
             margin-bottom: 15px;
-            font-size: 18px;
         }
 
-        .contact-form input,
+        .contact-form input, 
         .contact-form textarea {
             width: 100%;
             padding: 15px;
-            margin-bottom: 15px;
-            border: none;
+            background: #1e293b;
+            border: 1px solid rgba(255,255,255,0.1);
             border-radius: 10px;
-            outline: none;
-            background: rgba(255, 255, 255, 0.1);
             color: white;
-            font-size: 16px;
+            outline: none;
         }
 
-        .contact-form input:focus,
+        .contact-form textarea {
+            height: 150px;
+            resize: none;
+            margin-bottom: 20px;
+        }
+
+        .contact-form input:focus, 
         .contact-form textarea:focus {
-            background: rgba(255, 255, 255, 0.2);
-            border: 1px solid #38bdf8;
-        }
-
-        .contact-form button {
-            width: 100%;
-            padding: 15px;
-            background: #38bdf8;
-            border: none;
-            font-weight: 600;
-            cursor: pointer;
-            border-radius: 10px;
-            font-size: 16px;
-            transition: 0.3s;
-        }
-
-        .contact-form button:hover {
-            background: #0ea5e9;
+            border-color: #38bdf8;
         }
 
         /* RESPONSIVE */
-
-        @media(max-width:768px) {
-            nav {
-                padding: 20px;
-            }
-
-            /* Mobile Menu Styles */
-            .hamburger {
-                display: block;
-                z-index: 1001;
-            }
-
-            .hamburger.active .bar:nth-child(2) {
-                opacity: 0;
-            }
-
-            .hamburger.active .bar:nth-child(1) {
-                transform: translateY(8px) rotate(45deg);
-            }
-
-            .hamburger.active .bar:nth-child(3) {
-                transform: translateY(-8px) rotate(-45deg);
-            }
-
+        @media (max-width: 768px) {
             nav ul {
                 position: fixed;
                 left: -100%;
                 top: 0;
-                gap: 0;
                 flex-direction: column;
-                background-color: #0f172a;
+                background: #0f172a;
                 width: 100%;
                 height: 100vh;
-                text-align: center;
-                transition: 0.3s;
                 justify-content: center;
+                align-items: center;
+                transition: 0.3s;
             }
 
-            nav ul.active {
-                left: 0;
-            }
-
-            nav ul li {
-                margin: 30px 0;
-            }
-
-            section {
-                padding: 100px 20px;
-            }
-
-            #home h1 {
-                font-size: 40px;
-            }
+            nav ul.active { left: 0; }
+            .hamburger { display: block; }
+            .input-box { grid-template-columns: 1fr; }
+            section { padding: 80px 20px; }
         }
     </style>
 </head>
@@ -457,35 +305,32 @@
 
     <nav>
         <div class="logo">Aayush.Dev</div>
-        <ul>
+        <ul id="nav-menu">
             <li><a href="#home" class="active">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#skills">Skills</a></li>
             <li><a href="#projects">Projects</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
-        <div class="hamburger">
+        <div class="hamburger" onclick="toggleMenu()">
             <span class="bar"></span>
             <span class="bar"></span>
             <span class="bar"></span>
         </div>
     </nav>
 
-    <!-- HOME -->
     <section id="home">
         <h1>Hi, I'm <span>Aayush Yadav</span></h1>
         <p>Creative Web Developer & UI Designer</p>
         <a href="#projects" class="btn">View My Work</a>
     </section>
 
-    <!-- ABOUT -->
     <section id="about">
         <h2 class="section-title">About Me</h2>
         <div class="about-container">
-            <img src="aayushimg.jpeg" class="about-img">
-            <div>
-                <p>I am a passionate web developer creating modern and responsive websites. I love solving problems and
-                    bringing designs to life.</p>
+            <img src="aayush.jpeg" alt="Aayush Yadav" class="about-img">
+            <div class="about-text">
+                <p>I am a passionate web developer creating modern and responsive websites. I love solving problems and bringing designs to life.</p>
 
                 <div class="info-card">
                     <h4>Education</h4>
@@ -494,31 +339,28 @@
 
                 <div class="info-card">
                     <h4>Experience</h4>
-                    <p>I am fresher </p>
+                    <p>I am a Fresher eager to contribute</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SKILLS -->
     <section id="skills">
         <h2 class="section-title">My Skills</h2>
         <div class="skill-container">
-            <div class="skill-card">HTML5 </div>
-            <div class="skill-card">CSS</div>
-            <div class="skill-card">JavaScript </div>
+            <div class="skill-card">HTML5</div>
+            <div class="skill-card">CSS3</div>
+            <div class="skill-card">JavaScript</div>
             <div class="skill-card">C++</div>
             <div class="skill-card">Git & GitHub</div>
         </div>
     </section>
 
-    <!-- PROJECTS -->
     <section id="projects">
         <h2 class="section-title">My Projects</h2>
         <div class="project-container">
             <div class="project-card">
-                <img
-                    src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80">
+                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=500&q=80" alt="Project 1">
                 <div class="project-info">
                     <h4>E-commerce Dashboard</h4>
                     <p>A fully functional admin dashboard.</p>
@@ -526,8 +368,7 @@
             </div>
 
             <div class="project-card">
-                <img
-                    src="C:\Users\HP\AppData\Local\Temp\cefd9e8d-3c17-4bce-bfdc-42a58f9896f4_Aayush_project.zip.Aayush_project.zip\Aayush project\aayushimg.jpeg">
+                <img src="aayush.jpeg" alt="Project 2">
                 <div class="project-info">
                     <h4>Social Media App</h4>
                     <p>Real-time chat application.</p>
@@ -535,28 +376,38 @@
             </div>
 
             <div class="project-card">
-                <img
-                    src="C:\Users\HP\AppData\Local\Temp\cefd9e8d-3c17-4bce-bfdc-42a58f9896f4_Aayush_project.zip.Aayush_project.zip\Aayush project\aayushimg.jpeg">
+                <img src="aayush.jpeg" alt="Project 3">
                 <div class="project-info">
                     <h4>Code Editor</h4>
                     <p>Browser-based code editor.</p>
                 </div>
-            </div
             </div>
-            <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="heading">Contact <span>Me</span></h2>
-            <form action="#">
-                <div class="input-box">
-                    <input type="text" placeholder="Full Name">
-                    <input type="email" placeholder="Email Address">
-                </div>
-                <div class="input-box">
-                    <input type="number" placeholder="Mobile Number">
-                    <input type="text" placeholder="Email Subject">
-                </div>
-                <textarea name="" id="" cols="30" rows="10" placeholder="Your Message"></textarea>
-                <input type="submit" value="Send Message" class="btn">
-            </form>
         </div>
     </section>
+
+    <section id="contact">
+        <h2 class="section-title">Contact <span>Me</span></h2>
+        <form class="contact-form">
+            <div class="input-box">
+                <input type="text" placeholder="Full Name" required>
+                <input type="email" placeholder="Email Address" required>
+            </div>
+            <div class="input-box">
+                <input type="number" placeholder="Mobile Number">
+                <input type="text" placeholder="Email Subject">
+            </div>
+            <textarea placeholder="Your Message" required></textarea>
+            <button type="submit" class="btn">Send Message</button>
+        </form>
+    </section>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('nav-menu');
+            const hamburger = document.querySelector('.hamburger');
+            menu.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
