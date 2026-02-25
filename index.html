@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #0f172a;
+            color: #fff;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            position: fixed;
+            width: 100%;
+            padding: 20px 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: 0.3s;
+        }
+
+        nav .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #38bdf8;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+            font-size: 16px;
+        }
+
+        nav ul li a:hover,
+        nav ul li a.active {
+            color: #38bdf8;
+        }
+
+        /* Hamburger Menu (Hidden on Desktop) */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            transition: all 0.3s ease-in-out;
+            background-color: white;
+        }
+
+        /* SECTIONS */
+
+        section {
+            min-height: 100vh;
+            padding: 120px 100px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* HOME */
+
+        #home {
+            background: linear-gradient(to right, #0f172a, #1e293b);
+            align-items: flex-start;
+            /* Align text to left */
+        }
+
+        #home h1 {
+            font-size: 55px;
+            line-height: 1.2;
+        }
+
+        #home span {
+            color: #38bdf8;
+        }
+
+        #home p {
+            font-size: 20px;
+            margin-top: 10px;
+            color: #cbd5e1;
+        }
+
+        .btn {
+            margin-top: 20px;
+            padding: 12px 25px;
+            background: #38bdf8;
+            border: none;
+            color: #0f172a;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 30px;
+            transition: 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            width: max-content;
+        }
+
+        .btn:hover {
+            background: #0ea5e9;
+            transform: translateY(-3px);
+        }
+
+        /* ABOUT */
+
+        #about {
+            background: #1e293b;
+        }
+
+        .section-title {
+            font-size: 40px;
+            margin-bottom: 50px;
+            text-align: center;
+        }
+
+        .about-container {
+            display: flex;
+            gap: 50px;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .about-img {
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 20px;
+            border: 2px solid #38bdf8;
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 15px;
+            transition: 0.4s;
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
+
+        .info-card:hover {
+            transform: translateY(-10px);
+            background: #38bdf8;
+            color: #000;
+            border-color: #38bdf8;
+        }
+
+        /* SKILLS */
+
+        #skills {
+            background: #0f172a;
+        }
+
+        .skill-container {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .skill-card {
+            flex: 1 1 200px;
+            padding: 30px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            transition: 0.4s;
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .skill-card:hover {
+            transform: scale(1.05);
+            background: #38bdf8;
+            color: #000;
+        }
+
+        /* PROJECTS */
+
+        #projects {
+            background: #1e293b;
+        }
+
+        .project-container {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .project-card {
+            position: relative;
+            flex: 1 1 300px;
+            overflow: hidden;
+            border-radius: 20px;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+            transition: 0.5s;
+        }
+
+        .project-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .project-info {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            padding: 20px;
+            transform: translateY(100%);
+            transition: 0.5s;
+        }
+
+        .project-card:hover .project-info {
+            transform: translateY(0);
+        }
+
+        /* CONTACT */
+
+
+.contact {
+    background: #0f172a;
+    padding: 80px 10%;
+    color: #fff;
+}
+
+.contact .heading {
+    text-align: center;
+    font-size: 40px;
+    margin-bottom: 40px;
+}
+
+.contact .heading span {
+    color: #00f7ff;
+}
+
+.contact form {
+    max-width: 700px;
+    margin: auto;
+    text-align: center;
+}
+
+.contact .input-box {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.contact .input-box input {
+    width: 49%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    background: #1e293b;
+    color: #fff;
+    font-size: 16px;
+}
+
+.contact textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    background: #1e293b;
+    color: #fff;
+    font-size: 16px;
+    margin-bottom: 20px;
+    resize: none;
+}
+
+.contact .btn {
+    padding: 12px 30px;
+    border-radius: 30px;
+    border: none;
+    background: #00f7ff;
+    color: #000;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.contact .btn:hover {
+    background: #fff;
+    color: #000;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .contact .input-box input {
+        width: 100%;
+    }
+}
+
+
+
+        #contact {
+            background: linear-gradient(to right, #0f172a, #1e293b);
+        }
+
+        .contact-container {
+            display: flex;
+            gap: 50px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .contact-info,
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .contact-info p {
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 10px;
+            outline: none;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 16px;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid #38bdf8;
+        }
+
+        .contact-form button {
+            width: 100%;
+            padding: 15px;
+            background: #38bdf8;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .contact-form button:hover {
+            background: #0ea5e9;
+        }
+
+        /* RESPONSIVE */
+
+        @media(max-width:768px) {
+            nav {
+                padding: 20px;
+            }
+
+            /* Mobile Menu Styles */
+            .hamburger {
+                display: block;
+                z-index: 1001;
+            }
+
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+
+            .hamburger.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+
+            nav ul {
+                position: fixed;
+                left: -100%;
+                top: 0;
+                gap: 0;
+                flex-direction: column;
+                background-color: #0f172a;
+                width: 100%;
+                height: 100vh;
+                text-align: center;
+                transition: 0.3s;
+                justify-content: center;
+            }
+
+            nav ul.active {
+                left: 0;
+            }
+
+            nav ul li {
+                margin: 30px 0;
+            }
+
+            section {
+                padding: 100px 20px;
+            }
+
+            #home h1 {
+                font-size: 40px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo">Aayush.Dev</div>
+        <ul>
+            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </nav>
+
+    <!-- HOME -->
+    <section id="home">
+        <h1>Hi, I'm <span>Aayush Yadav</span></h1>
+        <p>Creative Web Developer & UI Designer</p>
+        <a href="#projects" class="btn">View My Work</a>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-container">
+            <img src="aayushimg.jpeg" class="about-img">
+            <div>
+                <p>I am a passionate web developer creating modern and responsive websites. I love solving problems and
+                    bringing designs to life.</p>
+
+                <div class="info-card">
+                    <h4>Education</h4>
+                    <p>BSc in Computer Science</p>
+                </div>
+
+                <div class="info-card">
+                    <h4>Experience</h4>
+                    <p>I am fresher </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+        <h2 class="section-title">My Skills</h2>
+        <div class="skill-container">
+            <div class="skill-card">HTML5 </div>
+            <div class="skill-card">CSS</div>
+            <div class="skill-card">JavaScript </div>
+            <div class="skill-card">C++</div>
+            <div class="skill-card">Git & GitHub</div>
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+        <h2 class="section-title">My Projects</h2>
+        <div class="project-container">
+            <div class="project-card">
+                <img
+                    src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80">
+                <div class="project-info">
+                    <h4>E-commerce Dashboard</h4>
+                    <p>A fully functional admin dashboard.</p>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <img
+                    src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80">
+                <div class="project-info">
+                    <h4>Social Media App</h4>
+                    <p>Real-time chat application.</p>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <img
+                    src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80">
+                <div class="project-info">
+                    <h4>Code Editor</h4>
+                    <p>Browser-based code editor.</p>
+                </div>
+            </div
+            </div>
+            <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="heading">Contact <span>Me</span></h2>
+            <form action="#">
+                <div class="input-box">
+                    <input type="text" placeholder="Full Name">
+                    <input type="email" placeholder="Email Address">
+                </div>
+                <div class="input-box">
+                    <input type="number" placeholder="Mobile Number">
+                    <input type="text" placeholder="Email Subject">
+                </div>
+                <textarea name="" id="" cols="30" rows="10" placeholder="Your Message"></textarea>
+                <input type="submit" value="Send Message" class="btn">
+            </form>
+        </div>
+    </section>
